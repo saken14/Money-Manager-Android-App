@@ -11,8 +11,12 @@
 
     <color name="header_color">#eee</color>
     <color name="plus_text">#167246</color>
+    <color name="minus_text">#dd3c3c</color>
     <color name="income_bg">#c7ffe4</color>
+    <color name="expense_bg">#ffc5c5</color>
     <color name="comment_text">#4e4e4e</color>
     <color name="plus_btn">#e9d32f</color>
     <color name="blue">#2fb5e9</color>
+    <color name="income_add_bg">#dafff3</color>
+    <color name="expense_add_bg">#ffd5d5</color>
 </resources>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/expense_add_bg"
+    tools:context=".MinusPage">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PlusPage">
+
+        <Button
+            android:id="@+id/addElementBtn_min"
+            android:layout_width="163dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue"
+            android:text="@string/add_element"
+            android:textColor="#4E342E"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dateBox_min" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_min"
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:background="@color/header_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/convert_btn_2_min"
+                android:layout_width="163dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:backgroundTint="@color/blue"
+                android:text="@string/con_text"
+                android:textColor="#4E342E"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView_min"
+                android:layout_width="35dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="15dp"
+                android:contentDescription="@string/todo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_cash" />
+
+            <TextView
+                android:id="@+id/cashText_min"
+                android:layout_width="159dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/cash_text"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageView_min"
+                app:layout_constraintStart_toEndOf="@+id/imageView_min"
+                app:layout_constraintTop_toTopOf="@+id/imageView_min" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/plus_amount_field_min"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="110sp"
+            android:layout_marginTop="20dp"
+            android:autofillHints=""
+            android:backgroundTint="@color/plus_text"
+            android:ems="10"
+            android:hint="@string/summa"
+            android:inputType="number"
+            android:minHeight="48dp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textColorHint="@color/comment_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout_min" />
+
+        <EditText
+            android:id="@+id/comment_box_min"
+            android:layout_width="367dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:gravity="clip_vertical"
+            android:hint="@string/comment"
+            android:inputType="textPersonName"
+            android:scrollbars="vertical"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textColorHint="@color/comment_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.388"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/plus_amount_field_min" />
+
+        <TextView
+            android:id="@+id/dateBox_min"
+            android:layout_width="252dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:hint="@string/date"
+            android:textColor="@color/black"
+            android:textColorHint="#757575"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/comment_box_min" />
+
+        <ImageButton
+            android:id="@+id/date_btn_min"
+            android:layout_width="55dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/expense_add_bg"
+            android:contentDescription="@string/date"
+            app:layout_constraintBottom_toBottomOf="@+id/dateBox_min"
+            app:layout_constraintStart_toEndOf="@+id/dateBox_min"
+            app:layout_constraintTop_toTopOf="@+id/dateBox_min"
+            app:srcCompat="@drawable/ic_calendar"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <TextView
+            android:id="@+id/currency_min"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="3dp"
+            android:gravity="center_vertical"
+            android:text="@string/tenge"
+            android:textAlignment="textStart"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            app:layout_constraintBottom_toBottomOf="@+id/plus_amount_field_min"
+            app:layout_constraintStart_toEndOf="@+id/plus_amount_field_min"
+            app:layout_constraintTop_toTopOf="@+id/plus_amount_field_min" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

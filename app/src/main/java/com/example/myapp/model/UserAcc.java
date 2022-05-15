@@ -24,6 +24,10 @@ public class UserAcc {
         UserAcc.cash += cash;
     }
 
+    public void minusCash(double cash) {
+        UserAcc.cash -= cash;
+    }
+
     public UserAcc(double cash, String currency) {
         UserAcc.cash = cash;
         UserAcc.currency = currency;

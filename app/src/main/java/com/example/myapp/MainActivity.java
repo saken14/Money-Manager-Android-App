@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     MinusFragment minusFragment = new MinusFragment();
 
     static List<Element> elementList;
+    static List<Element> elementListMin;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -57,18 +58,23 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         elementList = new ArrayList<>();
         elementList.add(new Element(1, "770 ₸", "Обед", "13.05.2022"));
 
+        elementListMin = new ArrayList<>();
+        elementListMin.add(new Element(1, "780 ₸", "Обед minus", "13.05.2022"));
+
         convert_btn_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(userAcc.getCurrency().equals("KZT")) {
                     userAcc.setCurrency("USD");
                     userAcc.setCash(userAcc.getCash()/430);
-                    cashText.setText(userAcc.getCash() + " $");
+                    @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", userAcc.getCash());
+                    cashText.setText(formattedDouble + " $");
                 }
                 else {
                     userAcc.setCurrency("KZT");
                     userAcc.setCash(userAcc.getCash()*430);
-                    cashText.setText(userAcc.getCash() + " ₸");
+                    @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", userAcc.getCash());
+                    cashText.setText(formattedDouble + " ₸");
                 }
             }
         });
