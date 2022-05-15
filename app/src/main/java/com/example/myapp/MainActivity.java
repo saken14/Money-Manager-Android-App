@@ -46,12 +46,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.plus);
 
-        userAcc = new UserAcc(0);
+        userAcc = new UserAcc(0, "KZT");
         cashText = findViewById(R.id.cashText);
         cashText.setText(userAcc.getCash()+" ₸");
 
         elementList = new ArrayList<>();
-        elementList.add(new Element(1, 770, "Обед", "13.05.2022"));
+        elementList.add(new Element(1, "770 ₸", "Обед", "13.05.2022"));
     }
 
     private void setElementRecyclerPlus(List<Element> elementList) {

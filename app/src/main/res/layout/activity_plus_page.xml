@@ -132,4 +132,18 @@
         app:srcCompat="@drawable/ic_calendar"
         tools:ignore="DuplicateSpeakableTextCheck" />
 
+    <TextView
+        android:id="@+id/currency"
+        android:layout_width="50dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="3dp"
+        android:gravity="center_vertical"
+        android:text="@string/tenge"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="21sp"
+        app:layout_constraintBottom_toBottomOf="@+id/plus_amount_field"
+        app:layout_constraintStart_toEndOf="@+id/plus_amount_field"
+        app:layout_constraintTop_toTopOf="@+id/plus_amount_field" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

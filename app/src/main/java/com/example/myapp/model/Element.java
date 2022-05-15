@@ -2,11 +2,11 @@ package com.example.myapp.model;
 
 public class Element {
     int id;
-    double amount;
+    String amount;
     String comment;
     String date;
 
-    public Element(int id, double amount, String comment, String date) {
+    public Element(int id, String amount, String comment, String date) {
         this.id = id;
         this.amount = amount;
         this.comment = comment;
@@ -21,11 +21,11 @@ public class Element {
         this.id = id;
     }
 
-    public double getAmount() {
+    public String getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(String amount) {
         this.amount = amount;
     }
 

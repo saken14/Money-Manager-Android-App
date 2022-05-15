@@ -18,4 +18,6 @@
     <string name="empty_plus_amount_field">Введите сумму</string>
     <string name="empty_comment_box">Добавьте комментарии</string>
     <string name="empty_dateBox">Добавьте дату</string>
+    <string name="tenge">₸</string>
+    <string name="dollar">$</string>
 </resources>

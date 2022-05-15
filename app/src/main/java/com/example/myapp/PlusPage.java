@@ -30,9 +30,13 @@ public class PlusPage extends AppCompatActivity {
     EditText plus_amount_field;
     EditText comment_box;
     TextView dateBox;
+    TextView currency;
+    @SuppressLint("StaticFieldLeak")
+    static TextView cashText;
 
     Calendar dateAndTime= Calendar.getInstance();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,10 +44,20 @@ public class PlusPage extends AppCompatActivity {
 
         addElemBtn = findViewById(R.id.addElementBtn);
         date_btn = findViewById(R.id.date_btn);
+        cashText = findViewById(R.id.cashText);
 
         plus_amount_field = findViewById(R.id.plus_amount_field);
         comment_box = findViewById(R.id.comment_box);
         dateBox = findViewById(R.id.dateBox);
+        currency = findViewById(R.id.currency);
+        if(MainActivity.userAcc.getCurrency().equals("KZT")) {
+            cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+            currency.setText("₸");
+        }
+        else {
+            cashText.setText(MainActivity.userAcc.getCash() + " $");
+            currency.setText("$");
+        }
 
         date_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +65,8 @@ public class PlusPage extends AppCompatActivity {
                 setDate(view);
             }
         });
+
+        setInitialDateTime();
 
         addElemBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
@@ -70,12 +86,22 @@ public class PlusPage extends AppCompatActivity {
                     Toast.makeText(PlusPage.this, R.string.empty_dateBox, Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    //PlusFragment.elementList.add(new Element(4, 777, "saken test", "11.55.2222"));
-                    //Collections.reverse(PlusFragment.elementList);
-                    MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, Double.parseDouble(amount), commentBox, dateString));
-                    MainActivity.userAcc.addCash(Double.parseDouble(amount));
-                    MainActivity.cashText.setText(MainActivity.userAcc.getCash()+"");
-                    //Collections.reverse(PlusFragment.elementList);
+                    //Collections.reverse(MainActivity.elementList);
+                    if(MainActivity.userAcc.getCurrency().equals("KZT")) {
+                        MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " ₸", commentBox, dateString));
+                        MainActivity.userAcc.addCash(Double.parseDouble(amount));
+
+                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+                        cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+                    }
+                    else {
+                        MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " $", commentBox, dateString));
+                        MainActivity.userAcc.addCash(Double.parseDouble(amount));
+
+                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " $");
+                        cashText.setText(MainActivity.userAcc.getCash() + " $");
+                    }
+                    //Collections.reverse(MainActivity.elementList);
                     finish();
                 }
             }
@@ -93,15 +119,13 @@ public class PlusPage extends AppCompatActivity {
 
     // установка начальных даты и времени
     private void setInitialDateTime() {
-
         dateBox.setText(DateUtils.formatDateTime(this,
                 dateAndTime.getTimeInMillis(),
-                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR
-                        | DateUtils.FORMAT_SHOW_TIME));
+                DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_SHOW_YEAR));
     }
 
     // установка обработчика выбора даты
-    DatePickerDialog.OnDateSetListener d=new DatePickerDialog.OnDateSetListener() {
+    DatePickerDialog.OnDateSetListener d = new DatePickerDialog.OnDateSetListener() {
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
             dateAndTime.set(Calendar.YEAR, year);
             dateAndTime.set(Calendar.MONTH, monthOfYear);
