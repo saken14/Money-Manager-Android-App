@@ -25,6 +25,7 @@ import java.util.List;
 
 public class PlusPage extends AppCompatActivity {
     Button addElemBtn;
+    Button convert_btn_2;
     ImageButton date_btn;
 
     EditText plus_amount_field;
@@ -43,6 +44,7 @@ public class PlusPage extends AppCompatActivity {
         setContentView(R.layout.activity_plus_page);
 
         addElemBtn = findViewById(R.id.addElementBtn);
+        convert_btn_2 = findViewById(R.id.convert_btn_2);
         date_btn = findViewById(R.id.date_btn);
         cashText = findViewById(R.id.cashText);
 
@@ -67,6 +69,24 @@ public class PlusPage extends AppCompatActivity {
         });
 
         setInitialDateTime();
+
+        convert_btn_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(MainActivity.userAcc.getCurrency().equals("KZT")) {
+                    MainActivity.userAcc.setCurrency("USD");
+                    MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()/430);
+                    MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " $");
+                    cashText.setText(MainActivity.userAcc.getCash() + " $");
+                }
+                else {
+                    MainActivity.userAcc.setCurrency("KZT");
+                    MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()*430);
+                    MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+                    cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+                }
+            }
+        });
 
         addElemBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
