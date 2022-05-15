@@ -57,10 +57,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         cashText.setText(userAcc.getCash()+" ₸");
 
         elementList = new ArrayList<>();
-        elementList.add(new Element(1, "770 ₸", "Обед", "13.05.2022"));
+        //elementList.add(new Element(1, "770 ₸", "Обед", "13.05.2022"));
 
         elementListMin = new ArrayList<>();
-        elementListMin.add(new Element(1, "780 ₸", "Обед minus", "13.05.2022"));
+        //elementListMin.add(new Element(1, "780 ₸", "Обед", "13.05.2022"));
 
         convert_btn_1.setOnClickListener(new View.OnClickListener() {
             @Override

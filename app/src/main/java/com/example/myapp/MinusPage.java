@@ -115,18 +115,26 @@ public class MinusPage extends AppCompatActivity {
                 else {
                     //Collections.reverse(MainActivity.elementListMin);
                     if(MainActivity.userAcc.getCurrency().equals("KZT")) {
-                        MainActivity.elementListMin.add(new Element(MainActivity.elementListMin.get(MainActivity.elementListMin.size()-1).getId() + 1, amount + " ₸", commentBox, dateString));
+                        if(MainActivity.elementListMin.size() == 0)
+                            MainActivity.elementListMin.add(new Element(1, amount + " ₸", commentBox, dateString));
+                        else
+                            MainActivity.elementListMin.add(new Element(MainActivity.elementListMin.get(MainActivity.elementListMin.size()-1).getId() + 1, amount + " ₸", commentBox, dateString));
                         MainActivity.userAcc.minusCash(Double.parseDouble(amount));
 
-                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " ₸");
-                        cashText_min.setText(MainActivity.userAcc.getCash() + " ₸");
+                        @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+                        MainActivity.cashText.setText(formattedDouble + " ₸");
+                        cashText_min.setText(formattedDouble + " ₸");
                     }
                     else {
-                        MainActivity.elementListMin.add(new Element(MainActivity.elementListMin.get(MainActivity.elementListMin.size()-1).getId() + 1, amount + " $", commentBox, dateString));
+                        if(MainActivity.elementListMin.size() == 0)
+                            MainActivity.elementListMin.add(new Element(1, amount + " $", commentBox, dateString));
+                        else
+                            MainActivity.elementListMin.add(new Element(MainActivity.elementListMin.get(MainActivity.elementListMin.size()-1).getId() + 1, amount + " $", commentBox, dateString));
                         MainActivity.userAcc.minusCash(Double.parseDouble(amount));
 
-                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " $");
-                        cashText_min.setText(MainActivity.userAcc.getCash() + " $");
+                        @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+                        MainActivity.cashText.setText(formattedDouble + " $");
+                        cashText_min.setText(formattedDouble + " $");
                     }
                     //Collections.reverse(MainActivity.elementListMin);
                     finish();

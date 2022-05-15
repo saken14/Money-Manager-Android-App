@@ -120,18 +120,26 @@ public class PlusPage extends AppCompatActivity {
                 else {
                     //Collections.reverse(MainActivity.elementList);
                     if(MainActivity.userAcc.getCurrency().equals("KZT")) {
-                        MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " ₸", commentBox, dateString));
+                        if(MainActivity.elementList.size() == 0)
+                            MainActivity.elementList.add(new Element(1, amount + " ₸", commentBox, dateString));
+                        else
+                            MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " ₸", commentBox, dateString));
                         MainActivity.userAcc.addCash(Double.parseDouble(amount));
 
-                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " ₸");
-                        cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+                        @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+                        MainActivity.cashText.setText(formattedDouble + " ₸");
+                        cashText.setText(formattedDouble + " ₸");
                     }
                     else {
-                        MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " $", commentBox, dateString));
+                        if(MainActivity.elementList.size() == 0)
+                            MainActivity.elementList.add(new Element(1, amount + " $", commentBox, dateString));
+                        else
+                            MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, amount + " $", commentBox, dateString));
                         MainActivity.userAcc.addCash(Double.parseDouble(amount));
 
-                        MainActivity.cashText.setText(MainActivity.userAcc.getCash() + " $");
-                        cashText.setText(MainActivity.userAcc.getCash() + " $");
+                        @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+                        MainActivity.cashText.setText(formattedDouble + " $");
+                        cashText.setText(formattedDouble + " $");
                     }
                     //Collections.reverse(MainActivity.elementList);
                     finish();
