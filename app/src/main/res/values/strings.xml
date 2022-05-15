@@ -8,4 +8,14 @@
     <string name="plus_fragment">this is plus_fragment</string>
     <string name="minus_fragment">this is minus_fragment</string>
     <string name="con_text">Конвертировать</string>
+    <string name="summa">Сумма</string>
+    <string name="comment">Комментарии</string>
+    <string name="date">Дата</string>
+    <string name="cash_text">2000</string>
+    <string name="todo">TODO</string>
+    <string name="add_element">Добавить</string>
+
+    <string name="empty_plus_amount_field">Введите сумму</string>
+    <string name="empty_comment_box">Добавьте комментарии</string>
+    <string name="empty_dateBox">Добавьте дату</string>
 </resources>

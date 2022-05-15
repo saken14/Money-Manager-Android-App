@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.myapp.adapter.ElementAdapter;
 import com.example.myapp.model.Element;
@@ -23,21 +25,19 @@ import java.util.List;
  */
 public class PlusFragment extends Fragment {
     RecyclerView recyclerView;
+    Button plusBtn;
+    static List<Element> elementList;
+
     public PlusFragment(){
         // require a empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        List<Element> elementList = new ArrayList<>();
+        elementList = new ArrayList<>();
         elementList.add(new Element(1, 770, "Обед", "13.05.2022"));
         elementList.add(new Element(2, 1000, "Транспорт", "14.05.2022"));
         elementList.add(new Element(3, 2800, "Тариф Актив", "15.05.2022"));
-        elementList.add(new Element(4, 2800, "Тариф Актив", "15.05.2022"));
-        elementList.add(new Element(5, 2800, "Тариф Актив", "15.05.2022"));
-        elementList.add(new Element(6, 2800, "Тариф Актив", "15.05.2022"));
-        elementList.add(new Element(7, 2800, "Тариф Актив", "15.05.2022"));
-        elementList.add(new Element(8, 2800, "Тариф Актив", "15.05.2022"));
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_plus, container, false);
@@ -46,6 +46,16 @@ public class PlusFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(elementAdapter);
+
+        // обработка кнопки +
+        plusBtn = view.findViewById(R.id.plus_btn);
+        plusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), PlusPage.class);
+                getContext().startActivity(intent);
+            }
+        });
 
         return view;
     }

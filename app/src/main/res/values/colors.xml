@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
+    <color name="purple_200">#2fb5e9</color>
+    <color name="purple_500">#2d9dc9</color>
+    <color name="purple_700">#247ea2</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
@@ -13,4 +13,6 @@
     <color name="plus_text">#167246</color>
     <color name="income_bg">#c7ffe4</color>
     <color name="comment_text">#4e4e4e</color>
+    <color name="plus_btn">#e9d32f</color>
+    <color name="blue">#2fb5e9</color>
 </resources>

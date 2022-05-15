@@ -8,11 +8,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.myapp.adapter.ElementAdapter;
 import com.example.myapp.model.Element;
+import com.example.myapp.model.UserAcc;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -22,11 +25,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     RecyclerView elementRecyclerPlus;
     ElementAdapter elementAdapter;
+    UserAcc userAcc;
+    TextView cashText;
 
     BottomNavigationView bottomNavigationView;
     PlusFragment plusFragment = new PlusFragment();
     MinusFragment minusFragment = new MinusFragment();
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +42,10 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.plus);
+
+        userAcc = new UserAcc(2000);
+        cashText = findViewById(R.id.cashText);
+        cashText.setText(userAcc.getCash()+" ₸");
 
         /*List<Element> elementList = new ArrayList<>();
         elementList.add(new Element(1, 770, "Обед", "13.05.2022"));
