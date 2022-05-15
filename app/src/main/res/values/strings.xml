@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">myapp</string>
+    <string name="navbar_in">Доходы</string>
+    <string name="navbar_out">Расходы</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="plus_fragment">this is plus_fragment</string>
+    <string name="minus_fragment">this is minus_fragment</string>
+    <string name="con_text">Конвертировать</string>
+</resources>
