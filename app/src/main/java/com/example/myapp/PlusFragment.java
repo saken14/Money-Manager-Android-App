@@ -26,7 +26,6 @@ import java.util.List;
 public class PlusFragment extends Fragment {
     RecyclerView recyclerView;
     Button plusBtn;
-    static List<Element> elementList;
 
     public PlusFragment(){
         // require a empty public constructor
@@ -34,15 +33,10 @@ public class PlusFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        elementList = new ArrayList<>();
-        elementList.add(new Element(1, 770, "Обед", "13.05.2022"));
-        elementList.add(new Element(2, 1000, "Транспорт", "14.05.2022"));
-        elementList.add(new Element(3, 2800, "Тариф Актив", "15.05.2022"));
-
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_plus, container, false);
         recyclerView = view.findViewById(R.id.elementRecyclerPlus);
-        ElementAdapter elementAdapter = new ElementAdapter(getContext(), elementList);
+        ElementAdapter elementAdapter = new ElementAdapter(getContext(), MainActivity.elementList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(elementAdapter);

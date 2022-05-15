@@ -25,12 +25,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     RecyclerView elementRecyclerPlus;
     ElementAdapter elementAdapter;
-    UserAcc userAcc;
-    TextView cashText;
+    static UserAcc userAcc;
+    @SuppressLint("StaticFieldLeak")
+    static TextView cashText;
 
     BottomNavigationView bottomNavigationView;
     PlusFragment plusFragment = new PlusFragment();
     MinusFragment minusFragment = new MinusFragment();
+
+    static List<Element> elementList;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -43,21 +46,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         bottomNavigationView.setSelectedItemId(R.id.plus);
 
-        userAcc = new UserAcc(2000);
+        userAcc = new UserAcc(0);
         cashText = findViewById(R.id.cashText);
         cashText.setText(userAcc.getCash()+" ₸");
 
-        /*List<Element> elementList = new ArrayList<>();
+        elementList = new ArrayList<>();
         elementList.add(new Element(1, 770, "Обед", "13.05.2022"));
-        elementList.add(new Element(2, 1000, "Транспорт", "14.05.2022"));
-        elementList.add(new Element(3, 2800, "Тариф Актив", "15.05.2022"));
-
-        setElementRecyclerPlus(elementList);*/
-
-        /*FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.main_activity_layout, plusFragment);
-        fragmentTransaction.commit();*/
     }
 
     private void setElementRecyclerPlus(List<Element> elementList) {

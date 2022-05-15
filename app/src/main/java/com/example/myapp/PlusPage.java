@@ -2,6 +2,7 @@ package com.example.myapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +16,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myapp.model.Element;
+import com.example.myapp.model.UserAcc;
 
 import java.util.Calendar;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class PlusPage extends AppCompatActivity {
@@ -49,6 +53,7 @@ public class PlusPage extends AppCompatActivity {
         });
 
         addElemBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
                 String amount = plus_amount_field.getText().toString().trim();
@@ -65,10 +70,12 @@ public class PlusPage extends AppCompatActivity {
                     Toast.makeText(PlusPage.this, R.string.empty_dateBox, Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    PlusFragment.elementList.add(new Element(4, 777, "saken test", "11.55.2222"));
-                    //PlusFragment.elementList.add(new Element(PlusFragment.elementList.get(PlusFragment.elementList.size()-1).getId() + 1, Double.parseDouble(amount), commentBox, dateString));
-                    /*Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);*/
+                    //PlusFragment.elementList.add(new Element(4, 777, "saken test", "11.55.2222"));
+                    //Collections.reverse(PlusFragment.elementList);
+                    MainActivity.elementList.add(new Element(MainActivity.elementList.get(MainActivity.elementList.size()-1).getId() + 1, Double.parseDouble(amount), commentBox, dateString));
+                    MainActivity.userAcc.addCash(Double.parseDouble(amount));
+                    MainActivity.cashText.setText(MainActivity.userAcc.getCash()+"");
+                    //Collections.reverse(PlusFragment.elementList);
                     finish();
                 }
             }
