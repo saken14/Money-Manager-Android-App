@@ -48,11 +48,13 @@ public class MinusPage extends AppCompatActivity {
         dateBox_min = findViewById(R.id.dateBox_min);
         currency_min = findViewById(R.id.currency_min);
         if(MainActivity.userAcc.getCurrency().equals("KZT")) {
-            cashText_min.setText(MainActivity.userAcc.getCash() + " ₸");
+            @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+            cashText_min.setText(formattedDouble + " ₸");
             currency_min.setText("₸");
         }
         else {
-            cashText_min.setText(MainActivity.userAcc.getCash() + " $");
+            @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+            cashText_min.setText(formattedDouble + " $");
             currency_min.setText("$");
         }
 
@@ -69,6 +71,10 @@ public class MinusPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(MainActivity.userAcc.getCurrency().equals("KZT")) {
+                    if(MainActivity.userAcc.getCash() < 22) {
+                        Toast.makeText(MinusPage.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     MainActivity.userAcc.setCurrency("USD");
                     MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()/430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
@@ -76,6 +82,10 @@ public class MinusPage extends AppCompatActivity {
                     cashText_min.setText(formattedDouble + " $");
                 }
                 else {
+                    if(MainActivity.userAcc.getCash() < 0.05) {
+                        Toast.makeText(MinusPage.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     MainActivity.userAcc.setCurrency("KZT");
                     MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()*430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());

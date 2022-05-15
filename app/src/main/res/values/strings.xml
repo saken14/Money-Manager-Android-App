@@ -20,4 +20,7 @@
     <string name="empty_dateBox">Добавьте дату</string>
     <string name="tenge">₸</string>
     <string name="dollar">$</string>
+
+    <string name="not_enough">Не хватает средств</string>
+    <string name="top_up_balance">Пополните свой счет (min: 22₸ or 0.05$)</string>
 </resources>

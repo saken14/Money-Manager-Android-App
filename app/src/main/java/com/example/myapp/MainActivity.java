@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.myapp.adapter.ElementAdapter;
 import com.example.myapp.model.Element;
@@ -65,12 +66,20 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             @Override
             public void onClick(View view) {
                 if(userAcc.getCurrency().equals("KZT")) {
+                    if(userAcc.getCash() < 22) {
+                        Toast.makeText(MainActivity.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     userAcc.setCurrency("USD");
                     userAcc.setCash(userAcc.getCash()/430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", userAcc.getCash());
                     cashText.setText(formattedDouble + " $");
                 }
                 else {
+                    if(userAcc.getCash() < 0.05) {
+                        Toast.makeText(MainActivity.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     userAcc.setCurrency("KZT");
                     userAcc.setCash(userAcc.getCash()*430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", userAcc.getCash());

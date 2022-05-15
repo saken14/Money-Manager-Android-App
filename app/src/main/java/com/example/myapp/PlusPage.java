@@ -53,11 +53,13 @@ public class PlusPage extends AppCompatActivity {
         dateBox = findViewById(R.id.dateBox);
         currency = findViewById(R.id.currency);
         if(MainActivity.userAcc.getCurrency().equals("KZT")) {
-            cashText.setText(MainActivity.userAcc.getCash() + " ₸");
+            @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+            cashText.setText(formattedDouble + " ₸");
             currency.setText("₸");
         }
         else {
-            cashText.setText(MainActivity.userAcc.getCash() + " $");
+            @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
+            cashText.setText(formattedDouble + " $");
             currency.setText("$");
         }
 
@@ -74,6 +76,10 @@ public class PlusPage extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(MainActivity.userAcc.getCurrency().equals("KZT")) {
+                    if(MainActivity.userAcc.getCash() < 22) {
+                        Toast.makeText(PlusPage.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     MainActivity.userAcc.setCurrency("USD");
                     MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()/430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
@@ -81,6 +87,10 @@ public class PlusPage extends AppCompatActivity {
                     cashText.setText(formattedDouble + " $");
                 }
                 else {
+                    if(MainActivity.userAcc.getCash() < 0.05) {
+                        Toast.makeText(PlusPage.this, R.string.top_up_balance, Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     MainActivity.userAcc.setCurrency("KZT");
                     MainActivity.userAcc.setCash(MainActivity.userAcc.getCash()*430);
                     @SuppressLint("DefaultLocale") String formattedDouble = String.format("%.2f", MainActivity.userAcc.getCash());
